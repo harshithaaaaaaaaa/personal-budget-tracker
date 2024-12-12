@@ -1,0 +1,15 @@
+<script>
+     document.querySelectorAll('input').forEach(input => {
+        if (input.type !== 'file') {
+            input.setAttribute('required', true);
+        }
+    });
+</script>
+  
+</body>
+
+<footer>
+    <p>&copy; Copyright <%= new Date().getFullYear() %></p>
+</footer>
+
+</html>

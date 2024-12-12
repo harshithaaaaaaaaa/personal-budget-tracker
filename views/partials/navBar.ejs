@@ -1,0 +1,38 @@
+<div class="dashboard-container">
+    <div id="header">
+        <a href="/" class="nav-icon"><img src="images/app-icon.jpeg" alt="App-icon"></a>
+        <div>
+            <ul id="navbar">
+                <li><a href="/">Dashboard</a></li>
+                <li><a href="/income">Income entry</a></li>
+                <li><a href="/incomeTable">Income details</a></li>
+                <li><a href="/expense">Expense entry</a></li>
+                <li><a href="/expenseTable">Expense details</a></li>
+                <li><a href="/budget">Budget management</a></li>
+                <li><a href="/budgetTable">Budget management Entry</a></li>
+            </ul>
+            <ul>
+                <li id="logout"><a href="/login">Logout</a></li>
+            </ul>
+        </div>
+    </div>
+    <div id="info-container">
+        <% const monthNames = [
+        "January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"
+      ];
+      
+      const today = new Date();
+      const monthName = monthNames[today.getMonth()]; %>
+        <div class="total-calculation">
+            <h1>Month: <%= monthName %></h1>
+            <hr>
+            <ul>
+                <li>Total income: <strong><%= total.income %></strong></li>
+                <li>Total expense: <strong><%= total.expense %></strong></li>
+                <li>Budget to be maintained: <strong><%= total.budget %></strong></li>
+                <li>Balance: <strong><%= total.income-total.expense %></strong></li>
+            </ul>
+        </div>
+        <div id="budget" data-budget="<%= total.budget || 0 %>"></div>
+        

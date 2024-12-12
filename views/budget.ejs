@@ -1,0 +1,42 @@
+<%- include("partials/header.ejs") %>
+  <title>Budget</title>
+  <style>
+    .form-items {
+      height: 350px;
+      width: 300px;
+    }
+
+    .form-items h1 {
+      text-align: center;
+    }
+  </style>
+  </head>
+
+  <body>
+    <%- include("partials/navBar.ejs") %>
+
+      <div class="form-container">
+        <form action="/budget" class="form-items" method="post">
+          <h1>Budget Management</h1>
+          <input type="text" name="budgetMonth" id="budgetMonth" placeholder="Enter Month" onfocus="(this.type='month')" onblur="(this.type='text')" required>
+          <input type="number" name="budgetAmount" id="budgetAmount" placeholder="Enter your Budget" required>
+          <input type="submit" value="Submit" class="btn">
+        </form>
+      </div>
+      </div>
+      </div>
+
+      <script>
+        // JavaScript to set the min attribute to the current month
+        const monthInput = document.getElementById('budgetMonth');
+        const today = new Date();
+        const year = today.getFullYear();
+        const month = today.getMonth() + 1; // Months are zero-based in JavaScript
+
+        // Format the month to be two digits
+        const formattedMonth = month < 10 ? '0' + month : month;
+        const minMonth = `${year}-${formattedMonth}`;
+
+        monthInput.min = minMonth;
+      </script>
+      <%- include("partials/footer.ejs") %>

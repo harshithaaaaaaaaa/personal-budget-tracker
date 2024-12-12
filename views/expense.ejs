@@ -1,0 +1,47 @@
+<%- include("partials/header.ejs") %>
+    <title>Budget</title>
+</head>
+
+<body>
+    <%- include("partials/navBar.ejs") %>
+    <div class="form-container">
+      <form action="/expense" method="post" class="form-items" id="expenseForm" enctype="multipart/form-data">
+          <h1>Expense Entry</h1>
+          <input type="text" name="category" placeholder="Enter the category" required>
+          <input type="number" name="amount" placeholder="Enter your expense amount" required>
+          <input type="text" placeholder="Enter Date of Expense" onfocus="(this.type='date')" onblur="(this.type='text')" name="expense_date" id="expenseDate" required>
+          <label for="file-upload" class="custom-file-upload">
+            Upload receipt
+        </label>
+          <input type="file" name="receipt" accept="image/*,application/pdf" id="file-upload">
+          <input type="submit" value="Add expense" class="btn">
+      </form>
+  </div>
+  <div id="budget" data-budget="<%= total.budget || 0 %>"></div>
+  <div id="balance" data-balance="<%= total.income - total.expense %>"></div>
+
+  <script>
+      document.addEventListener("DOMContentLoaded", function() {
+          const balance = parseFloat(document.getElementById("balance").dataset.balance);
+          const expenseForm = document.getElementById("expenseForm");
+          const today = new Date().toISOString().split('T')[0];
+
+          document.getElementById("expenseDate").setAttribute("max", today);
+
+          expenseForm.addEventListener("submit", function(event) {
+              const amount = parseFloat(document.querySelector('input[name="amount"]').value);
+              if (isNaN(amount) || amount <= 0) {
+                  alert("Expense amount must be greater than zero.");
+                  event.preventDefault();
+                  return;
+              }
+              if (amount > balance) {
+                  alert("Expense exceeds the balance, cannot be added.");
+                  event.preventDefault();
+              }
+          });
+      });
+  </script>
+ </div>
+</div>
+<%- include("partials/footer.ejs") %>

@@ -1,0 +1,41 @@
+<%- include("partials/header.ejs") %>
+    <title>Income Details</title>
+    </head>
+
+    <body>
+        <%- include("partials/navBar.ejs") %>
+        <form action="/downloadReport" method="get">
+            <input type="submit" value="Download Report">
+        </form>
+            <div class="income-table">
+                <table>
+                    <tr>
+                        <th>Source of income</th>
+                        <th>Amount</th>
+                        <th>Date of income</th>
+                        <th>Date of Entry</th>
+                        <th>Delete Entry</th>
+                    </tr>
+
+                    <% income.forEach(function(i) { const incomeDate=new
+                        Date(i.income_date).toISOString().split('T')[0]; const createdAt=new
+                        Date(i.created_at).toLocaleString('en-GB', { year: "numeric" , month: "2-digit" , day: "2-digit"
+                        , hour: "2-digit" , minute: "2-digit" , second: "2-digit" , hour12: true,});%>
+                        <tr>
+                            <td><%= i.source %></td>
+                            <td><%= i.amount %></td>
+                            <td><%= incomeDate %></td>
+                            <td><%= createdAt %></td>
+                            <td>
+                                <form action="/deleteIncome" method="post">
+                                    <input type="hidden" name="incomeId" value="<%= i.id %>">
+                                    <input type="submit" value="Delete">
+                                </form>
+                            </td>
+                        </tr>
+                        <% }); %>
+                </table>
+            </div>
+            </div>
+            </div>
+            <%- include("partials/footer.ejs") %>

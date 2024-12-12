@@ -1,0 +1,177 @@
+<%- include("partials/header.ejs") %>
+<title>Dashboard</title>
+<style>
+    body {
+        background-color: #e4e9fd;
+        background-image: none;
+    }
+    .chart-container {
+        display: none;
+    }
+    .active {
+        display: block;
+    }
+</style>
+</head>
+<body>
+<%- include("partials/navBar.ejs") %>
+<div class="button-chart">
+    <button id="monthlyOverviewBtn">Monthly Overview</button>
+    <button id="incomeOverviewBtn">Income Overview</button>
+    <button id="expenseOverviewBtn">Expense Overview</button>
+    <button id="yearlySavingsBtn">Yearly Savings</button>
+</div>
+<div class="chart-container active bar-chart" id="monthlyOverviewContainer">
+    <h1>Monthly Overview</h1>
+    <canvas id="monthlyOverviewChart" width="400" height="200"></canvas>
+</div>
+<div class="chart-container bar-chart" id="incomeOverviewContainer">
+    <h1>Income Overview</h1>
+    <canvas id="incomeOverviewChart" width="400" height="200"></canvas>
+</div>
+<div class="chart-container bar-chart" id="expenseOverviewContainer">
+    <h1>Expense Overview</h1>
+    <canvas id="expenseOverviewChart" width="400" height="200"></canvas>
+</div>
+<div class="chart-container bar-chart" id="yearlySavingsContainer">
+    <h1>Yearly Savings Overview</h1>
+    <canvas id="yearlySavingsChart" width="400" height="200"></canvas>
+</div>
+</div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', async function () {
+        const monthlyOverviewBtn = document.getElementById('monthlyOverviewBtn');
+        const incomeOverviewBtn = document.getElementById('incomeOverviewBtn');
+        const expenseOverviewBtn = document.getElementById('expenseOverviewBtn');
+        const yearlySavingsBtn = document.getElementById('yearlySavingsBtn');
+
+        const monthlyOverviewContainer = document.getElementById('monthlyOverviewContainer');
+        const incomeOverviewContainer = document.getElementById('incomeOverviewContainer');
+        const expenseOverviewContainer = document.getElementById('expenseOverviewContainer');
+        const yearlySavingsContainer = document.getElementById('yearlySavingsContainer');
+
+        const chartContainers = [monthlyOverviewContainer, incomeOverviewContainer, expenseOverviewContainer, yearlySavingsContainer];
+
+        function showContainer(container) {
+            chartContainers.forEach(cont => cont.classList.remove('active'));
+            container.classList.add('active');
+        }
+
+        monthlyOverviewBtn.addEventListener('click', () => showContainer(monthlyOverviewContainer));
+        incomeOverviewBtn.addEventListener('click', () => showContainer(incomeOverviewContainer));
+        expenseOverviewBtn.addEventListener('click', () => showContainer(expenseOverviewContainer));
+        yearlySavingsBtn.addEventListener('click', () => showContainer(yearlySavingsContainer));
+
+        async function fetchData(url) {
+            const response = await fetch(url);
+            return response.json();
+        }
+
+        // Load charts
+        const monthlyData = await fetchData('/monthlyData');
+        new Chart(document.getElementById('monthlyOverviewChart').getContext('2d'), {
+            type: 'bar',
+            data: {
+                labels: monthlyData.labels,
+                datasets: [
+                    {
+                        label: 'Income',
+                        data: monthlyData.income,
+                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'Expenditure',
+                        data: monthlyData.expenditure,
+                        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                        borderColor: 'rgba(255, 99, 132, 1)',
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'Savings',
+                        data: monthlyData.savings,
+                        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                        borderColor: 'rgba(54, 162, 235, 1)',
+                        borderWidth: 2
+                    }
+                ]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        const incomeData = await fetchData('/incomeData');
+        new Chart(document.getElementById('incomeOverviewChart').getContext('2d'), {
+            type: 'line',
+            data: {
+                labels: incomeData.labels,
+                datasets: [{
+                    label: 'Income',
+                    data: incomeData.data,
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    fill: false,
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        const expenseData = await fetchData('/expenseData');
+        new Chart(document.getElementById('expenseOverviewChart').getContext('2d'), {
+            type: 'line',
+            data: {
+                labels: expenseData.labels,
+                datasets: [{
+                    label: 'Expense',
+                    data: expenseData.data,
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    fill: false,
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        const yearlySavingsData = await fetchData('/yearlySavingsData');
+        new Chart(document.getElementById('yearlySavingsChart').getContext('2d'), {
+            type: 'bar',
+            data: {
+                labels: yearlySavingsData.labels,
+                datasets: [{
+                    label: 'Savings',
+                    data: yearlySavingsData.data,
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    });
+</script>
+<%- include("partials/footer.ejs") %>

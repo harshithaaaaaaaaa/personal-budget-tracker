@@ -1,0 +1,57 @@
+<%- include("partials/header.ejs") %>
+<title>Expense entry</title>
+</head>
+
+<body>
+    <%- include("partials/navBar.ejs") %>
+    <form action="/downloadExpenseReport" method="get">
+        <input type="submit" value="Download Report">
+    </form>
+    <div class="income-table">
+        <table>
+            <tr>
+                <th>Category of Expenditure</th>
+                <th>Amount</th>
+                <th>Date of expenditure</th>
+                <th>Date of Entry</th>
+                <th>Receipt</th>
+                <th>Delete Entry</th>
+            </tr>
+
+            <% expense.forEach(function(i) { 
+                const expenseDate = new Date(i.expense_date).toISOString().split('T')[0]; 
+                const createdAt = new Date(i.created_at).toLocaleString('en-GB', { 
+                    year: "numeric", 
+                    month: "2-digit", 
+                    day: "2-digit",
+                    hour: "2-digit", 
+                    minute: "2-digit", 
+                    second: "2-digit", 
+                    hour12: true 
+                });
+            %>
+                <tr>
+                    <td><%= i.category %></td>
+                    <td><%= i.amount %></td>
+                    <td><%= expenseDate %></td>
+                    <td><%= createdAt %></td>
+                    <td>
+                        <% if (i.receipt) { %>
+                            <a href="/uploads/receipts/<%= i.receipt %>" target="_blank">View Receipt</a>
+                        <% } else { %>
+                            No Receipt
+                        <% } %>
+                    </td>
+                    <td>
+                        <form action="/deleteExpense" method="post">
+                            <input type="hidden" name="expenseId" value="<%= i.id %>">
+                            <input type="submit" value="Delete">
+                        </form>
+                    </td>
+                </tr>
+            <% }); %>
+        </table>
+    </div>
+</div>
+</div>
+<%- include("partials/footer.ejs") %>

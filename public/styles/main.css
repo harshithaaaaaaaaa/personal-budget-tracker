@@ -1,0 +1,376 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap");
+
+* {
+  font-family: "Poppins", sans-serif;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  color: #382f2f;
+}
+
+body {
+  background-color: #c4cce8;
+}
+
+.icon {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+}
+
+.login-form-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 88vh;
+}
+
+.form-container {
+  border-radius: 10px;
+  margin: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 90%;
+  flex: 1;
+  background-image: -webkit-linear-gradient(70deg, #a683e3 50%, #e4e9fd 50%);
+}
+
+.form-items {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 350px;
+  gap: 15px;
+  width: 300px;
+  background-color:#e4e9fd;
+  box-shadow: 0px 20px 75px rgba(0, 0, 0, 0.25);
+  border-radius: 15px;
+}
+
+.expense-confirm-form{
+  height: 300px;
+  width: 600px;
+  gap:15px;
+  margin-top: 30px;
+  justify-content: space-around;
+  padding: 30px;
+}
+
+.expense-confirm-form p{
+  text-align: center;
+}
+
+.yes-or-no{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 90%;
+  gap: 20px;
+}
+
+
+.login-form-items {
+  height: 550px;
+  gap: 15px;
+  width: 350px;
+}
+
+.signup-form-items{
+  height: 600px;
+}
+
+.google-auth{
+  width: 80%;
+  background-color: #a683e3;
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items:center;
+  justify-content: center;
+  transition: transform 0.2s;
+}
+
+.google-auth:hover{
+  background-color: #8662c5;
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+.google-auth a{
+  text-decoration: none;
+}
+
+i{
+  margin-right: 10px;
+}
+
+.google-auth p{
+  display: inline;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+
+input[type="text"],
+input[type="password"], 
+input[type="number"],
+input[type="date"],
+input[type="month"] ,
+input[type="file"]{
+  border: none;
+  background-color: #e4e9fd;
+  height: 40px;
+  width: 80%;
+  padding: 10px;
+  border-bottom: 1px solid #382f2f;
+}
+
+input[type="text"]::placeholder,
+input[type="password"]::placeholder,
+input[type="number"]::placeholder,
+input[type="date"]::placeholder, 
+input[type="month"]::placeholder ,
+input[type="file"]::placeholder{
+  text-align: center;
+  color: #382f2f;
+}
+
+input:focus {
+  border-bottom: 1px solid black;
+  outline: none;
+}
+
+.btn ,button[type="submit"]{
+  margin: 15px 0 20px 0;
+  border: none;
+  background-color: #a683e3;
+  color: black;
+  height: 40px;
+  border-radius: 10px;
+  width: 60%;
+  transition: transform 0.2s;
+}
+
+.btn:hover,button[type="submit"]:hover {
+  background-color: #8662c5;
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+body {
+  background-color: #e4e9fd;
+}
+
+.dashboard-container {
+  display: flex;
+  flex-direction: row;
+  height: 88vh;
+}
+
+#header {
+  background-color: #8662c5;
+  width: 250px;
+  height: 85vh;
+  margin: 15px;
+  box-shadow: 0px 20px 75px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+#header img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  margin-bottom: 50px;
+  margin-top: 15px;
+}
+
+#header ul a {
+  color: #e4e9fd;
+  text-decoration: none;
+}
+
+#header ul a:hover {
+  cursor: pointer;
+  color: #c4cce8;
+}
+
+#header ul li {
+  list-style: none;
+  padding: 10px;
+  border-bottom: 1px solid #e4e9fd;
+  transition: transform 0.2s;
+  font-size: 15px;
+}
+
+#header ul li:hover {
+  transform: scale(1.1);
+}
+
+#logout {
+  border-top: 1px solid #e4e9fd;
+  margin-top: 15%;
+}
+
+#header #logout a{
+  color: #ffffff;
+}
+
+#info-container {
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0px 20px 50px rgba(0, 0, 0, 0.25);
+  margin: 15px;
+  background-color: #e4e9fd;
+  padding: 10px;
+  border-radius: 10px;
+  flex: 1;
+}
+
+.total-calculation {
+  background-color: #8662c5;
+  box-shadow: 0px 20px 75px rgba(0, 0, 0, 0.25);
+  padding: 20px;
+  margin: 10px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.total-calculation h1{
+  color: #e4e9fd;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.total-calculation ul{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.total-calculation ul li {
+  color: #e4e9fd;
+  list-style: none;
+  box-shadow: 0px 20px 75px rgba(0, 0, 0, 0.25);
+  padding: 10px 25px 10px 25px;
+  border-radius: 10px;
+}
+
+.total-calculation ul li strong{
+  color: #e4e9fd;
+}
+
+.button-chart{
+  background-color: #8662c5;
+  box-shadow: 0px 20px 75px rgba(0, 0, 0, 0.25);
+  padding: 10px;
+  margin: 5px 15px 5px 15px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.button-chart button{
+  background-color: #8662c5;
+  box-shadow: 0px 20px 75px rgba(0, 0, 0, 0.25);
+  border: none;
+  color: #e4e9fd;
+  padding: 10px 10px;
+  border-radius: 10px;
+}
+
+.bar-chart {
+  border-radius: 10px;
+  margin: 10px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
+  flex: 1;
+  max-width: 95%; /* Ensure the chart container doesn't exceed a maximum width */
+  width: 100%; /* Make sure it takes up the full available width */
+  margin: auto; /* Center the chart container */
+  margin: 20px 20px 50px 30px;
+  box-shadow: 25px 20px 75px rgba(0, 0, 0, 0.25);
+}
+
+#monthlyOverviewChart, #incomeOverviewChart, #expenseOverviewChart, #yearlySavingsChart {
+  width: 100%; /* Ensure the canvas takes up the full width of the container */
+  max-height: 280px; /* Set a maximum height to prevent overflow */
+}
+
+input[type="submit"],.custom-file-upload{
+  background-color: #a683e3;
+  border: none;
+  box-shadow: 25px 20px 75px rgba(0, 0, 0, 0.25);
+  color: #e4e9fd;
+  padding: 6px 10px;
+  border-radius: 5px;
+  transition: transform 0.2s;
+}
+
+input[type="submit"]:hover,.custom-file-upload:hover{
+  background-color: #8662c5;
+  transform: scale(1.05);
+}
+
+footer{
+  padding: 20px;
+  margin: 10px;
+  background-color: #8662c5;
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: 0px 20px 75px rgba(0, 0, 0, 0.25);
+}
+
+footer p{
+  color: #e4e9fd;
+}
+
+.income-table {
+  margin-top: 20px;
+  max-height: 500px; /* Set a fixed maximum height for the container */
+  overflow-y: auto; /* Enable vertical scrolling */
+  width: 95%;
+  margin-left: auto;
+  margin-right: auto; /* Center the container horizontally */
+}
+
+table {
+  width: 100%; /* Ensure table takes full width of the container */
+  border-collapse: collapse; 
+}
+
+th, td {
+  border: 1px solid black; 
+  padding: 10px; 
+  text-align: center; 
+  vertical-align: middle; 
+}
+
+/* Scrollbar styling for WebKit browsers */
+.income-table::-webkit-scrollbar {
+  width: 7px; /* Width of the scrollbar */
+}
+
+
+.income-table::-webkit-scrollbar-thumb {
+  background: #8662c5; /* Color of the scrollbar thumb */
+  border-radius: 5px; /* Round the corners of the thumb */
+  padding: 10px;
+}
+
+.income-table::-webkit-scrollbar-thumb:hover {
+  background: #555; /* Color of the scrollbar thumb on hover */
+}

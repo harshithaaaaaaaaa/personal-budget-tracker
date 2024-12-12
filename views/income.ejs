@@ -1,0 +1,30 @@
+<%- include("partials/header.ejs") %>
+    <title>Income entry</title>
+</head>
+
+<body>
+    <%- include("partials/navBar.ejs") %>
+
+          <div class="form-container">
+            <form action="/income" class="form-items" method="POST">
+    
+                <h1>Income tracker</h1>
+                <input type="text" name="source" id="" placeholder="Enter the Source of income" required>
+
+                <input type="number" name="amount" id="" placeholder="Enter your amount" required>
+
+                <input type="text" placeholder="Enter Date" onfocus="(this.type='date')" onblur="(this.type='text')" name="income_date" id="expenseDate">
+                <input type="submit" value="Add Income" class="btn">
+            </form>
+    
+    
+        </div>
+      </div>
+  </div>
+  <script>
+    const today = new Date().toISOString().split('T')[0]; // Current date in YYYY-MM-DD format
+          
+          // Set max attribute of the date input to today's date
+          document.getElementById("expenseDate").setAttribute("max", today);
+  </script>
+  <%- include("partials/footer.ejs") %>

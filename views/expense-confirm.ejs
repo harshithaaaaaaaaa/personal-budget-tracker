@@ -1,0 +1,24 @@
+<%- include("partials/header.ejs") %>
+<title>Confirm Expense</title>
+</head>
+
+<body>
+    <%- include("partials/navBar.ejs") %>
+    <div class="form-container">
+        
+        <form action="/expense-confirm" method="post" class="form-items expense-confirm-form">
+            <h1>Expense Confirmation</h1>
+            <p>This expense exceeds the <b>budget </b>to be maintained. Do you still want to add the expenditure?</p>
+            <input type="hidden" name="category" value="<%= category %>">
+            <input type="hidden" name="amount" value="<%= amount %>">
+            <input type="hidden" name="expense_date" value="<%= expense_date %>">
+            <div class="yes-or-no">
+                <button type="submit" name="confirmed" value="yes">Yes</button>
+                <button type="submit" name="confirmed" value="no">No</button>
+            </div>
+        </form>
+    </div>
+</div>
+</div>
+    <%- include("partials/footer.ejs") %>
+
